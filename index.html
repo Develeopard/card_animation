@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CardAnimation</title>
+</head>
+<body>
+
+
+    
+    <div class="card">
+        <!-- Video shown on start -->
+        <div class="camp">
+                <lottie-player class="lottie-player" src="https://assets10.lottiefiles.com/private_files/lf30_hhhuwhsh.json " background="transparent"  speed="1"  style="width: 300px; height: 300px;"loop autoplay></lottie-player>
+        </div>
+
+        <!-- Video shown after subscribe -->
+        <div class="success">
+            <lottie-player class="lottie" src="https://assets5.lottiefiles.com/packages/lf20_aehuzqdw.json" background="transparent" speed="1"></lottie-player>
+        </div>
+
+        <div class="card-bottom">
+            <h1 class="seq">subscribe to CampFire?</h1>
+            <p class="seq">branches are burning yeeeaaah</p>
+            <a href="#" class="btn seq">subscribe</a>
+
+        </div>
+        <h1 class="msg">success!</h1>
+    </div>
+    
+    
+    
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js" integrity="sha512-1d5v+PiEBtx3YjXb8mrY+b7aPCIF1nVQcExMopDaO2ATKY3ivHre8aqSdzC6c+1RLSNdqLK+a45oz0qqxtyEWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        let tl = new gsap.timeline({defaults: {ease: 'power4.out'}});
+
+        let btn = document.querySelector('.btn');
+        const player = document.querySelector('.lottie');
+
+        tl.paused(true)
+
+        tl.to('.seq',{duration: 2, y: 60, opacity: 0, display: 'none', stagger: 0.1})
+        tl.to('.msg',{y: -40, opacity: 1,}, '-=1.5')
+        tl.to('.camp', {scale: 0}, '-=2')
+        tl.to('.success', {display: 'block'})
+
+        btn.addEventListener('click', () => {
+            tl.play()
+            setTimeout(() => {
+                player.play()
+            }, 800)
+
+        })
+
+    </script>
+
+</body>
+</html>
